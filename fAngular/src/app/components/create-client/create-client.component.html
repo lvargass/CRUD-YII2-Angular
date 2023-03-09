@@ -1,0 +1,91 @@
+<h2 align="center">
+    Creacion del cliente
+    <a routerLink="/" class="btn btn-sm btn-primary float-end">Volver atras</a>
+</h2>
+
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit(clientForm.value)">
+    <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 align="center">Informacion Basica Y Perfil</h3>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="first_name">
+                        Primer Nombre <span class="text-danger">*</span>
+                    </label>
+                    <input id="first_name" type="text" formControlName="first_name" class="form-control" autofocus required>
+                </div>
+                <div class="col-sm-6">
+                    <label for="last_name">
+                        Segundo Nombre <span class="text-danger">*</span>
+                    </label>
+                    <input id="last_name" type="text" formControlName="last_name" class="form-control" required>
+                </div>
+            </div>
+            <div>
+                <label for="phone">
+                    Telefono <span class="text-danger">*</span>
+                </label>
+                <input id="phone" type="text" formControlName="phone" class="form-control" required>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="username">
+                        Usuario <span class="text-danger">*</span>
+                    </label>
+                    <input id="username" type="text" formControlName="username" class="form-control" required>
+                </div>
+                <div class="col-sm-6">
+                    <label for="password">
+                        Contraseña <span class="text-danger">*</span>
+                    </label>
+                    <input id="password" type="password" formControlName="password" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h3 align="center">Direccion</h3>
+            <div>
+                <label for="country">
+                    Pais <span class="text-danger">*</span>
+                </label>
+                <select id="country" formControlName="country" class="form-control" required>
+                    <option>Republica Dominicana</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="city">
+                        Ciudad <span class="text-danger">*</span>
+                    </label>
+                    <input id="city" type="text" formControlName="city" class="form-control" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="state">
+                        Estado <span class="text-danger">*</span>
+                    </label>
+                    <input id="state" type="text" formControlName="state" class="form-control" required>
+                </div>
+                <div class="col-sm-4">
+                    <label for="zipcode">
+                        Codigo Postal <span class="text-danger">*</span>
+                    </label>
+                    <input id="zipcode" type="text" formControlName="zipcode" class="form-control" required>
+                </div>
+                <div>
+                    <label for="address">
+                        Direccion <span class="text-danger">*</span>
+                    </label>
+                    <textarea id="address" type="text" formControlName="address" class="form-control" required></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger mt-1" role="alert" *ngIf="!clientForm.valid">
+        Es obligatorio llenar todos los campos para habilitar la creacion del cliente.
+    </div>
+    <div class="d-block text-center mt-2">
+        <button class="btn btn-primary" type="submit" [disabled]="!clientForm.valid">Crear Cliente</button>
+    </div>
+</form>

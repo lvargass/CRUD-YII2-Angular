@@ -1,0 +1,38 @@
+<h2>
+    Lista de Clientes
+    <button class="btn btn-sm btn-primary float-end" (click)="onCreateClient()">Create Client</button>
+</h2>
+<div class="container">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Primer nombre</th>
+                <th>Apellido</th>
+                <th>Usuario</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!listClients.length">
+                <td colspan="7">
+                    <label>No hay clientes registrados</label>
+                </td>
+            </tr>
+            <tr *ngFor="let client of listClients">
+                <td>{{ client.id }}</td>
+                <td>{{ client.first_name }}</td>
+                <td>{{ client.last_name }}</td>
+                <td>{{ client.username }}</td>
+                <td>{{ client.phone }}</td>
+                <td>{{ client.address }}</td>
+                <td>
+                    <a [routerLink]="'/client/edit/' + client.id" class="btn btn-sm btn-warning mr-2">Editar</a>
+                    <button class="btn btn-sm btn-danger m-1" (click)="onDeleteClient(client.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
